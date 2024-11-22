@@ -6,6 +6,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, accuracy_score, mean_squared_error
 from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import cross_val_score
 
 # Load your dataset
 data = pd.read_csv('output_with_cipher_suite.csv')  # Replace with your dataset path
@@ -181,3 +182,8 @@ plt.savefig('rf_ft_importance.png', dpi=300)
 plt.close()
 
 print("Plots saved as 'impact_of_training.png', 'confidence_level.png', and 'confusion_matrix.png'")
+
+
+cv_scores = cross_val_score(rf_classifier, X, y, cv=5)  # 5-fold cross-validation
+print(f"Cross-Validation Scores: {cv_scores}")
+print(f"Mean CV Score: {np.mean(cv_scores)}")
