@@ -1,4 +1,3 @@
-________________________  in progress  ___________________________
 # Classifying IoT Devices in Smart Environments Using Network Traffic Characteristics
 
 ## Overview
@@ -11,7 +10,7 @@ This repository contains the implementation of machine learning models to classi
 - [Models Used](#models-used)
 - [Results](#results)
 - [Installation](#installation)
-- [Usage](#usage)
+- [References](#references)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
 
@@ -39,13 +38,44 @@ The dataset used in this project was sourced from A. Sivanathan et al., which in
 ## Results
 The results show that **XGBoost** outperformed other models, achieving the highest accuracy of **96.26%** and the lowest **RRSE** of **25.77%**. Random Forest and Gradient Boosting also showed strong performance, with accuracies of **95.87%** and **95.02%**, respectively.
 
-- **XGBoost Confusion Matrix**: [Link to results]
-- **Random Forest Confusion Matrix**: [Link to results]
-- **Gradient Boosting Confusion Matrix**: [Link to results]
+- **XGBoost Confusion Matrix**: [[Link to results](https://github.com/kakumanuphanindra/Classifying_IoT_Devices_Based_on_Network_Patterns/tree/master/stage_1/xgboot/previous_run_outputs)]
+- **Random Forest Confusion Matrix**: [[Link to results](https://github.com/kakumanuphanindra/Classifying_IoT_Devices_Based_on_Network_Patterns/tree/master/stage_1/random_forest_code/previous_run_outputs)]
+- **Gradient Boosting Confusion Matrix**: [[Link to results](https://github.com/kakumanuphanindra/Classifying_IoT_Devices_Based_on_Network_Patterns/tree/master/stage_1/gb/previous_run_output)]
 
 ## Installation
-To run the project locally, follow these steps:
+To run the project locally you need python installed and follow these steps:
 
 1. Clone the repository:
    ```bash
    git clone https://github.com/kakumanuphanindra/Classifying_IoT_Devices_Based_on_Network_Patterns.git
+   ```
+2. install dependencies
+   ```bash
+   numpy
+   scapy
+   matplotlib
+   seaborn
+   pandas
+   sklearn
+   ```
+3. Download dataset from [here](https://iotanalytics.unsw.edu.au/iottraces.html#bib18tmc) and place all pcap file in ```attributes_processing/pcap_files```.
+4. Execute ```attributes_processing/processing_data.py```
+5. place the generated output ```all_attr_output.csv``` file in ```stage_0/bag_of_dst_ports_and_NB_1``` then execute ```bag_of_words_and_nv_dst_port```.
+6. place the generated output ```output_with_dst_port.csv``` file in ```stage_0/bag_of_dns_and_NB_2``` then execute ```model_dns```.
+7. place the generated output ```output_with_dns.csv``` file in ```stage_0/bag_of_cipher_and_NB_3``` then execute ```model_cipher```.
+8. place the generated output ```output_with_cipher.csv``` file in ```stage_1/required model path``` and execute for expected results.
+
+## References
+
+1.	A. Sivanathan et al., "Classifying IoT Devices in Smart Environments Using Network Traffic Characteristics," in IEEE Transactions on Mobile Computing, vol. 18, no. 8, pp. 1745-1759, 1 Aug. 2019, doi: 10.1109/TMC.2018.2866249.
+2.	[2]	A. Sivanathan et al., "Characterizing and classifying IoT traffic in smart cities and campuses," 2017 IEEE Conference on Computer Communications Workshops (INFOCOM WKSHPS), Atlanta, GA, USA, 2017, pp. 559-564, doi: 10.1109/INFCOMW.2017.8116438.
+3.	S. Alexander and R. Droms, “DHCP Options and BOOTP vendor extensions,” Internet Requests for Comments, RFC Editor, RFC 2132, Mar. 1997.
+4.	https://github.com/cisco/joy
+5.	https://github.com/kakumanuphanindra/Classifying_IoT_Devices_Based_on_Network_Patterns
+
+## Acknowledgements
+
+- I acknowledge the work of **A. Sivanathan et al.**, whose research and publicly available dataset formed the foundation of this project.  
+- Special thanks to the developers of **Wireshark** and **Joy**, which were essential for network traffic analysis and feature extraction.  
+- I am grateful for the open-source contributions of libraries like **Scikit-learn**, **XGBoost**, and **Pandas**, which made model development and evaluation seamless.  
+- Finally, I extend my gratitude to the **Dr. Yiheng Liang, Dr. Jin Lu & Dr. Gong Chen** for continues guidance and support to complete this project at **University of Georgia**.
